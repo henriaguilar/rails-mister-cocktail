@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
+<%= link_to 'Back', cocktails_path %> |
+<%= link_to 'Add new dose', new_cocktail_dose_path(@cocktail) %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cocktail.name %>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Description</th>
+      <th>Ingredient</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @cocktail.doses.each do |dose| %>
+        <tr>
+          <td><%= dose.id %></td>
+          <td><%= dose.description %></td>
+          <td><%= dose.ingredient.name %></td>
+          <td><%= link_to 'Show', cocktail_dose_path(@cocktail, dose.id) %></td>
+        </tr>
+      <% end %>
+
+  </tbody>
+</table>
+
+
