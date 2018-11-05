@@ -10,15 +10,12 @@ class CocktailsController < ApplicationController
   # GET /cocktails/1
   # GET /cocktails/1.json
   def show
+    @dose = Dose.new
   end
 
   # GET /cocktails/new
   def new
     @cocktail = Cocktail.new
-  end
-
-  # GET /cocktails/1/edit
-  def edit
   end
 
   # POST /cocktails
@@ -32,20 +29,6 @@ class CocktailsController < ApplicationController
         format.json { render :show, status: :created, location: @cocktail }
       else
         format.html { render :new }
-        format.json { render json: @cocktail.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /cocktails/1
-  # PATCH/PUT /cocktails/1.json
-  def update
-    respond_to do |format|
-      if @cocktail.update(cocktail_params)
-        format.html { redirect_to @cocktail, notice: 'Cocktail was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cocktail }
-      else
-        format.html { render :edit }
         format.json { render json: @cocktail.errors, status: :unprocessable_entity }
       end
     end
